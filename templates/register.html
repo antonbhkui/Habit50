@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div class="login-page">
+        <div class="login-header">
+            <h1>Sign up</h1>
+            <p>And start building some habits!</p>
+        </div>
+        <form class="login-form" action="/register" method="POST">
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" name="confirmation" placeholder="Confirm Password" type="password">
+            </div>
+            <button class="btn" type="submit">Sign up</button>
+        </form>
+        <p class="signup-link">Already have an account? <a href="/login">Log In</a></p>
+    </div>
+{% endblock %}
+

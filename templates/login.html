@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <img class="logo-login" src="{{ url_for('static', filename='images/Habit50Logo.png') }}" alt="logo">
+    <div class="login-page">
+        <div class="login-header">
+            <h1>Welcome back!</h1>
+            <p>Ready to build some habits?</p>
+        </div>
+        <form class="login-form" action="/login" method="POST">
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+            </div>
+            <button class="btn" type="submit">Log In</button>
+        </form>
+        <p class="signup-link">Don't have an account? <a href="/register">Register</a></p>
+    </div>
+{% endblock %}

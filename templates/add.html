@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block main %}
+
+    <h1>Add Habit</h1>
+    <p></p>
+    <form class="add-form" action="/add" method="POST">
+        <div class="add-container">
+            <div class="fa1">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="habit-name" placeholder="Habit" type="text">
+                <select name="type" class="form-control mx-auto w-auto" >
+                    <option disabled selected value="">Type</option>
+                    {% for t in types %}
+                        <option value="{{ t }}">{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="fa1" >
+                <input class="form-control mx-auto w-auto" type="number" id="number-input" name="number" min="1" step="1" value="1">
+                <select class="form-control mx-auto w-auto" name="eorm">
+                    {% for i in eorm %}
+                        <option value="{{ i }}" {% if loop.first %} selected {% endif %}>{{ i }}</option>
+                    {% endfor %}
+                </select>
+                <select class="form-control mx-auto w-auto" name="interval">
+                    {% for j in intervals %}
+                        <option value="{{ j }}" {% if loop.first %} selected {% endif %}>{{ j }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="fa1">
+                <div class="tod-dropdown">
+                    <Label class="dropbtn">Time of Day</label>
+                    <div class="dropdown-content">
+                        <label class="tod-container">Morning
+                            <input type="checkbox" name="tod" value="Morning" checked="checked">
+                             <span class="checkmark"></span>
+                         </label>
+                           
+                         <label class="tod-container">Afternoon
+                             <input type="checkbox" name="tod" value="Afternoon" >
+                             <span class="checkmark"></span>
+                         </label>
+                           
+                         <label class="tod-container">Evening
+                             <input type="checkbox" name="tod" value="Evening" >
+                             <span class="checkmark"></span>
+                         </label>
+                    </div>
+                </div>
+                <div class="date-picker">
+                    <input placeholder="Start date" type="date" class="datepicker-input" name="start-date">
+                </div>
+            </div>
+            <div class="fa1">
+                <input class="notes" name="notes" placeholder="Add notes">
+            </div>
+        </div>
+        <div class="button-submit">
+            <button class="btn" type="submit">Add Habit</button>
+        </div>
+    </form>
+
+
+   
+
+ 
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div class="login-page">
+        <div class="login-header">
+            <h1 class="changeh">Create a new Password</h1>
+        </div>
+        <form class="login-form" action="/change" method="POST">
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="current_password" placeholder="Current Password" type="password">
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" name="new_password" placeholder="New Password" type="password">
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" name="confirmation" placeholder="Confirm Password" type="password">
+            </div>
+            <button class="btn" class="bottomre" type="submit">Change Password</button>
+        </form>
+    </div>
+{% endblock %}
+

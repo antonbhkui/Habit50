@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div class="login-page">
+        <div class="login-header">
+            <h1>Your Profile</h1>
+        </div>
+        <h3 class="profile-page">Username = {{ usernameProfile }}</h2>
+        <h3>Password: ******** </h2>
+        <a class="btn" href="{{ url_for('change') }}" role="button">Change Password</a>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,157 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+<div class="bg-index">
+    <h1>Hi, {{ usernameIndex }}</h1>
+    <h2>Complete your habits today!</h2>
+    <div class="show-time">
+        <p id="datetime"></p>
+        <script>
+        var now = new Date();
+        var datetime = now.toLocaleString();
+
+        document.getElementById("datetime").innerHTML = datetime;
+        </script>
+    </div>
+
+    <p class="table-title-completed">Uncompleted</p>
+    <div class="lineup">
+        <table name="not-completed">
+            {% for habitline in habitlines %}
+                <tr class="lineup-tr {% if habitline.type == 'Hobby' %}hobby-bg{%elif habitline.type == 'Health and Fitness' %}health-bg
+                {%elif habitline.type == 'Finance' %}finance-bg{%elif habitline.type == 'Personal Improvement' %}personal-bg
+                {%elif habitline.type == 'Other' %}other-bg{% endif %}">
+                    <td class="name-td">{{ habitline.name }}</td>
+                    <td class="frequency-td">{{ habitline.frequency }} {{ habitline.eorm }} {{ habitline.interval }}</td>
+                    <td>
+                        <div class="bin-and-checkbox">
+                            <form method="POST" class="delete-form">
+                                <input type="hidden" name="deletehabit" value="{{ habitline.id }}">
+                                <button class="delete-btn" type="submit" data-habit-id="{{ habitline.id }}">
+                                    <img class="bin" src="{{ url_for('static', filename='images/bin.png') }}" alt="bin">
+                                </button>
+                            </form>
+                            <div class="cntr">
+                                <input type="checkbox" id="cbx{{ loop.index }}" class="hidden-xs-up" name="completed">
+                                <label for="cbx{{ loop.index }}" class="cbx"></label>
+                                <input type="hidden" name="habit_id" value="{{ habitline.id }}">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <p class="table-title-completed">Completed</p>
+    <div class="completed-lineup">
+        <span>
+            <table name="completed">
+                <tr class="completed-rows"></tr>
+            </table>
+        </span> 
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let originalTable = document.querySelector('table[name="not-completed"]');
+        let newTable = document.querySelector('table[name="completed"]');
+
+        let completedIds = JSON.parse(localStorage.getItem('completedIds')) || [];
+        originalTable.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            let row = checkbox.closest('tr');
+            let habitId = row.querySelector('input[name=habit_id]').value;
+
+            if (completedIds.includes(habitId)) {
+                checkbox.checked = true;
+                row.classList.add('completed-rows');
+                newTable.appendChild(row);
+            }
+
+            checkbox.addEventListener('change', function() {
+                let row = this.closest('tr');
+                const habitId = row.querySelector('input[name="habit_id"]').value;
+                const completed = this.checked ? "True" : "False";
+                console.log("habitId:", habitId);
+
+                fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams({
+                        habit_id: habitId,
+                        completed: completed
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Sending fetch with request:", { habitId, completed });
+                    console.log("Server response:", data);
+                    if (data.success) {
+                        if (completed === "True") {
+                            row.classList.add('completed-rows');
+                            newTable.appendChild(row);
+                            completedIds.push(habitId);
+                        } else {
+                            row.classList.remove('completed-rows');
+                            originalTable.appendChild(row);
+                            completedIds = completedIds.filter(id => id !== habitId);
+                        }
+                        localStorage.setItem('completedIds', JSON.stringify(completedIds));
+                    } else {
+                        alert("Error updating habit.");
+                    }
+                })
+                .catch(err => console.error("Fetch error:", err));
+            })
+        })
+    })
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".delete-btn").forEach(button => {
+                button.addEventListener("click", function (event) {
+                    event.preventDefault(); 
+
+                    const habitId = this.getAttribute("data-habit-id");
+
+                    if (!confirm("Are you sure you want to delete this habit?")) {
+                        return;
+                    }
+
+                    fetch("/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: new URLSearchParams({
+                            deletehabit: habitId
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const row = this.closest("tr");
+                            row.remove();
+                            alert("Habit deleted successfully!");
+                        } else {
+                            console.error("Error deleting habit:", data.error);
+                            alert("Failed to delete the habit. Please try again.");
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Fetch error:", err);
+                        alert("An error occurred while deleting the habit.");
+                    });
+                });
+            });
+        });
+    </script>
+
+</div>
+{% endblock %}

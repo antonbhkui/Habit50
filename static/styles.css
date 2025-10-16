@@ -1,0 +1,595 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('/static/images/laptop.png') no-repeat 1200px 600px,
+                url('/static/images/reading.png') no-repeat 100px 600px,
+                linear-gradient(to top right, #F2F4FA, #E5F1FF);
+    background-size: 32em, 35em, cover;
+    background-position: bottom right, bottom left, center; 
+    background-attachment: fixed;
+    margin: 0;
+    height: 100vh;
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 4em;
+}
+
+.login-page {
+    text-align: center; /* Center text inside the container */
+    padding: 20px; /* Add some padding for spacing */
+    max-width: 400px; /* Limit the width of the form for better design */
+    width: 100%; /* Allow it to stretch up to max-width */
+    background: white; /* Set a white background for the form */
+    border-radius: 8px; /* Add some border-radius for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.login-header h1 {
+    font-size: 1.8rem;
+    color: #4D4D4D;
+    margin-bottom: 0.5rem;
+}
+
+.login-header p {
+    color: #7A7A7A;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #f297c0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #4D4D4D;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e66b9e;
+}
+
+.signup-link {
+    font-size: 0.9rem;
+    color: #7A7A7A;
+    margin-top: 1rem;
+}
+
+.signup-link a {
+    color: #4D9EFF;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.add-container {
+    text-align: center; /* Center text inside the container */
+    padding: 1em; /* Add some padding for spacing */
+    max-width: 600px; /* Limit the width of the form for better design */
+    width: 100%; /* Allow it to stretch up to max-width */
+    background: white; /* Set a white background for the form */
+    border-radius: 8px; /* Add some border-radius for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    margin: 0 auto;
+}
+
+
+.fa1 {
+    display: flex;
+    margin-bottom: 1em;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+}
+
+.add-subtitle {
+    color: #ccc;
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+select.form-control {
+    flex-grow: 1; 
+    padding: 0.8em;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input.form-control, select {
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 0.8em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+input.notes {
+    width: 100%;  /* Make the notes input stretch across the full width */
+    padding: 1em;
+    height: 100px;  /* Make the notes input bigger vertically */
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    vertical-align: top;  /* Align the text to the top of the input box */
+    text-align: left;  /* Optional: ensure text aligns to the left */
+    padding-top: 0.5em;  /* Adjust this value to fine-tune the alignment */
+}
+
+.button-submit {
+    padding-top: 1.5em;
+}
+
+.submit {
+    border-radius: 8px;
+}
+
+
+.dropbtn {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
+    
+}
+  
+.tod-dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+  /* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    background-color: white;
+}
+  
+  /* Links inside the dropdown */
+.dropdown-content label {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+  /* Change color of dropdown links on hover */
+.dropdown-content :hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu on hover */
+.tod-dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+.tod-dropdown:hover .dropbtn {
+    background-color: #e0d7d5;
+}
+
+.tod-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.date-picker {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 0.8em;
+    width: 65%
+}
+
+.datepicker-input {
+    border: none;
+}
+
+
+.calendar {
+    width: 380px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    margin-top: 5em;
+}
+
+.cal-dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+.cal-dropdown:hover .dropbtn {
+    background-color: #e0d7d5;
+}
+
+.cal-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.cal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.cal-header button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    padding-top: 1em;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+}
+
+.day {
+    text-align: center;
+    padding: 5px;
+    color: #999FA6;
+    font-weight: 500;
+}
+
+.dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transition: 0.2s;
+}
+
+.date:hover,
+.date.active {
+    background: #f297c0;
+    color: white;
+
+}
+
+.date.inactive:hover {
+    color: white;
+}
+
+
+.lineup-tr {
+    border: 1px solid white;
+    color: #333333;
+    border-radius: 30px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    padding: 0.5em;
+    margin: 5px;
+    width: 100%;
+    width: 40em;
+    height: 4em;
+    margin-bottom: 0.75em;
+}
+
+.hobby-bg {
+    background-color: #E6D1F7;
+}
+
+.health-bg {
+    background-color: #B4E5D1;
+} 
+
+.finance-bg {
+    background-color: #A7D8FF;
+} 
+
+.personal-bg {
+    background-color: #FFF7A0;
+} 
+
+.other-bg {
+    background-color: #FFDAB9;
+} 
+
+.name-td {
+    text-align: left;
+    margin-left: 1em;
+    font-weight: 200;
+}
+
+.frequency-td {
+    flex: 1;
+    text-align: left;
+    color: rgb(107, 134, 134);
+    font-size: smaller;
+    padding-left: 20px;
+}
+
+
+.checkbox-td {
+    padding-right: 0.75em;
+    text-align: right;
+    flex: 0 0 auto;
+}
+
+.index-check {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
+
+.index-check:hover {
+    transform: scale(1.1);
+}
+
+.cbx {
+    position: relative;
+    top: 1px;
+    width: 35px;
+    height: 35px;
+    border: 2px solid white;
+    border-radius: 50%;
+    transition: background 0.1s ease;
+    cursor: pointer;
+    display: block;
+}
+   
+.cbx:after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    width: 10px;
+    height: 17px;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transition: all 0.3s ease;
+    transition-delay: 0.15s;
+}
+
+.lbl {
+    margin-left: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.hidden-xs-up:checked + .cbx {
+    background: transparent;
+    animation: jelly 0.6s ease;
+}
+
+.hidden-xs-up:checked + .cbx:after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+}
+
+.cntr {
+    position: relative;
+}
+
+@keyframes jelly {
+from {
+    transform: scale(1, 1);
+}
+
+30% {
+    transform: scale(1.25, 0.75);
+}
+
+40% {
+    transform: scale(0.75, 1.25);
+}
+
+50% {
+    transform: scale(1.15, 0.85);
+}
+
+65% {
+    transform: scale(0.95, 1.05);
+}
+
+75% {
+    transform: scale(1.05, 0.95);
+}
+
+to {
+    transform: scale(1, 1);
+}
+}
+
+.hidden-xs-up {
+    display: none!important;
+}
+   
+
+.table-title {
+    position: relative;
+    color: lightgray;
+    font-size: 15px; 
+    text-align: left;
+    display: block;
+    width: 121%;
+    margin-bottom: 6px;
+    margin-top: 2em;
+}
+
+.table-title {
+    position: relative;
+    color: lightgray;
+    font-size: 15px; 
+    text-align: left;
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 2em;
+}
+
+.table-title-completed {
+    position: relative;
+    color: lightgray;
+    font-size: 15px; 
+    text-align: left;
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 2em;
+}
+
+.completed-rows {
+    text-decoration: line-through;
+    color: gray;
+    filter: brightness(80%)
+}
+
+.progress-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.progress-table-div {
+    width: 100%;
+    max-width: 700px;
+    overflow-x: auto;
+}
+
+.progress-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 1px;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: 1 px solid #ddd;
+}
+
+.progress-table th, .progress-table td {
+    text-align: center;
+    padding: 10px;
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+}
+
+.progress-table th:first-child, .progress-table td:first-child {
+    width: 110px; 
+}
+
+.progress-table th {
+    background-color: #B3A7D1;
+    color: white;
+    font-weight: bold;
+    border-top-left-radius: 8px; 
+}
+
+.progress-table td {
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+}
+
+.progress-table td.completed {
+    background-color: #A8E6CF; /* Pastel green */
+}
+
+.progress-table td.not-completed {
+    background-color: #FFCDD2; /* Pastel red */
+}
+
+.progress-table td.inactive {
+    background-color: #f3f3f3; /* Light gray for inactive cells */
+}
+
+.changeh {
+    padding-bottom: 1em;
+}
+
+.logo-login {
+    width: 175px;
+    height: auto;
+    margin-top: -90px;
+    margin-bottom: 2em;
+}
+
+
+.navbar-nav {
+    display: flex;
+    align-items: center; 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0 8px;
+}
+
+.navbar-logo {
+    width: 70px; 
+    height: auto;
+    margin-right: 10px; 
+}
+
+.bin-and-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.bin {
+    width: 16px;
+    height: auto;
+}

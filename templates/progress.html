@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Progress
+{% endblock %}
+
+{% block main %}
+<div class="background-progress">
+    <h1>Your progress!</h1>
+    <div class="progress-container">
+        <div class="progress-table-div">
+            <table class="progress-table">
+                <thead>
+                    <tr class="columns-progress">
+                        <th>Progress</th>
+                        {% for date, day_with_suffix in combinedDate %}
+                            <td>{{ day_with_suffix }}</td>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for habitline in habitlines %}
+                        <tr>
+                            <td>{{ habitline.name }}</td> 
+                            {% for date, day in combinedDate %}
+                                {% set completed = completion_status.get((habitline.id, date), None) %}
+                                <td
+                                    class="{% if completed is true %}completed{% else %}inactive{% endif %}">
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
